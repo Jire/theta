@@ -2,10 +2,13 @@ package theta;
 
 import java.util.Set;
 
+import mint.inject.ImplementedBy;
+
+@ImplementedBy(CycleServer.class)
 public interface Server extends Socket {
 
-	public void start();
+	void start();
 
-	public Set<Client> getClients();
+	Set<Client> getClients();
 
 }

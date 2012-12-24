@@ -8,8 +8,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import mint.event.EventManager;
+import mint.inject.Singleton;
 import theta.events.ClientAcceptEvent;
 
+@Singleton
 public final class CycleServer extends AbstractServer implements Runnable {
 
 	private final int cycleRate;

@@ -4,8 +4,8 @@ import mint.event.EventManager;
 
 public interface Socket {
 
-	public EventManager getEventManager();
+	EventManager getEventManager();
 
-	public Address getAddress();
+	Address getAddress();
 
 }

@@ -34,7 +34,7 @@ public final class Client extends AbstractSocket {
 		return key;
 	}
 
-	public ByteBuffer getInData() {
+	public ByteBuffer getInput() {
 		return inData;
 	}
 
