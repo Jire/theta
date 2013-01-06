@@ -1,8 +1,10 @@
 package theta;
 
+import theta.blocking.BlockingClientProvider;
+
 public final class Clients {
 
-	private static final GatewayProvider<Client> DEFAULT_PROVIDER = null;
+	private static final GatewayProvider<Client> DEFAULT_PROVIDER = new BlockingClientProvider();
 
 	private static GatewayProvider<Client> provider;
 

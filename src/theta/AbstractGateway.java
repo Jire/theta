@@ -29,6 +29,20 @@ public abstract class AbstractGateway<L extends GatewayListener> implements
 	}
 
 	@Override
+	public boolean bind() {
+		for (L listener : getListeners())
+			listener.bound(getAddress());
+		return true;
+	}
+
+	@Override
+	public boolean close() {
+		for (L listener : getListeners())
+			listener.closed(getAddress());
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return getAddress().toString();
 	}
