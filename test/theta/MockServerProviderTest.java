@@ -6,18 +6,31 @@ import org.junit.Test;
 
 public final class MockServerProviderTest {
 
-	private GatewayProvider<Server> provider;
-	private Address address;
+	private final GatewayProvider<Server> provider = new MockServerProvider();
+	private final Address address = Address.create(80);
 
+	private Server provided;
+
+	@Test
 	@Before
-	public void setup() {
-		provider = new MockServerProvider();
-		address = Address.create(80);
+	public void ensureProviderReturns() {
+		Assert.assertNotNull(provided = provider.provide(address));
 	}
 
 	@Test
-	public void ensureProviderReturns() {
-		Assert.assertNotNull(provider.provide(address));
+	public void ensureProvidedCanBind() {
+		Assert.assertTrue(provided.bind());
+	}
+
+	@Test
+	public void ensureProvidedCanClose() {
+		Assert.assertTrue(provided.close());
+	}
+
+	@Test
+	public void ensureProvidedAddressIsSynchronized() {
+		Assert.assertEquals(Address.create("localhost", 80),
+				provided.getAddress());
 	}
 
 }
