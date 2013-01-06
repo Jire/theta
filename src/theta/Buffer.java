@@ -2,12 +2,6 @@ package theta;
 
 public interface Buffer {
 
-	int capacity();
-
-	Buffer clear();
-
-	Buffer flip();
-
 	int read();
 
 	byte readByte();
