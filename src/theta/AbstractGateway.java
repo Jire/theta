@@ -28,6 +28,11 @@ public abstract class AbstractGateway<L extends GatewayListener> implements
 		listeners.add(listener);
 	}
 
+	@Override
+	public String toString() {
+		return getAddress().toString();
+	}
+
 	protected final Set<L> getListeners() {
 		return listeners;
 	}
