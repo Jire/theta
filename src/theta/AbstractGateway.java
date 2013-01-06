@@ -19,13 +19,13 @@ public abstract class AbstractGateway<L extends GatewayListener> implements
 	}
 
 	@Override
-	public final Address getAddress() {
-		return address;
+	public void register(L listener) {
+		listeners.add(listener);
 	}
 
 	@Override
-	public void register(L listener) {
-		listeners.add(listener);
+	public final Address getAddress() {
+		return address;
 	}
 
 	@Override

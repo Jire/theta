@@ -1,20 +1,31 @@
 package theta;
 
-import java.util.Set;
+public final class ServerOnlyClient implements Client {
 
-public abstract class ServerOnlyClient extends AbstractClient {
+	private final Client client;
 
-	protected ServerOnlyClient(Set<ClientListener> listeners, Address address) {
-		super(listeners, address);
-	}
-
-	protected ServerOnlyClient(Address address) {
-		super(address);
+	public ServerOnlyClient(Client client) {
+		this.client = client;
 	}
 
 	@Override
-	public final void bind() {
+	public void register(ClientListener listener) {
+		client.register(listener);
+	}
+
+	@Override
+	public Address getAddress() {
+		return client.getAddress();
+	}
+
+	@Override
+	public boolean bind() {
 		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public boolean close() {
+		return client.close();
 	}
 
 }

@@ -6,8 +6,8 @@ public interface Gateway<L extends GatewayListener> {
 
 	Address getAddress();
 
-	void close();
+	boolean bind();
 
-	void bind();
+	boolean close();
 
 }
