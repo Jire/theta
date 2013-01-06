@@ -14,9 +14,10 @@ class BlockingClient extends AbstractClient {
 		super(address);
 	}
 
-	protected BlockingClient(Address address, Socket socket) {
+	protected BlockingClient(Address address, Socket socket) throws IOException {
 		this(address);
 		this.socket = socket;
+		setBuffer(new BlockingBuffer(socket));
 	}
 
 	protected final Socket getSocket() {
@@ -27,6 +28,7 @@ class BlockingClient extends AbstractClient {
 	public boolean bind() {
 		try {
 			socket = new Socket(getAddress().getHost(), getAddress().getPort());
+			setBuffer(new BlockingBuffer(socket));
 			return getSocket() != null && super.bind();
 		} catch (IOException e) {
 			return false;

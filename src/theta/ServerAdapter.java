@@ -13,4 +13,9 @@ public abstract class ServerAdapter extends GatewayAdapter implements
 		// Intended to be overridden
 	}
 
+	@Override
+	public void dataReceived(Client client) {
+		// Intended to be overridden
+	}
+
 }

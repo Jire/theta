@@ -29,6 +29,11 @@ public final class ServerOnlyClient implements Client {
 	}
 
 	@Override
+	public Buffer getBuffer() {
+		return client.getBuffer();
+	}
+
+	@Override
 	public String toString() {
 		return client.toString();
 	}

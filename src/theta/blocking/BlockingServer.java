@@ -1,6 +1,7 @@
 package theta.blocking;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -49,14 +50,15 @@ class BlockingServer extends AbstractServer implements
 	@Override
 	public void run() {
 		while (!getSocket().isClosed() && getSocket().isBound()) {
-			Socket clientSocket;
+			Client client;
 			try {
-				clientSocket = getSocket().accept();
+				Socket clientSocket = getSocket().accept();
+				client = new ServerOnlyClient(new BlockingClient(
+						Address.create((InetSocketAddress) clientSocket
+								.getRemoteSocketAddress()), clientSocket));
 			} catch (IOException e) {
 				continue;
 			}
-			Client client = new ServerOnlyClient(new BlockingClient(
-					getAddress(), clientSocket));
 			getClients().add(client);
 			for (ServerListener listener : getListeners())
 				listener.connected(client);

@@ -6,4 +6,6 @@ public interface ServerListener extends GatewayListener {
 
 	void disconnected(Client client);
 
+	void dataReceived(Client client);
+
 }

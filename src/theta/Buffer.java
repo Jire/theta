@@ -4,6 +4,10 @@ public interface Buffer {
 
 	int read();
 
+	void read(byte[] bytes);
+
+	void read(byte[] bytes, int off, int len);
+
 	byte readByte();
 
 	short readShort();
@@ -23,6 +27,10 @@ public interface Buffer {
 	String readString();
 
 	Buffer write(int value);
+
+	Buffer write(byte[] bytes);
+
+	Buffer write(byte[] bytes, int off, int len);
 
 	Buffer writeByte(byte value);
 
