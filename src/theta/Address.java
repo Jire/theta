@@ -1,6 +1,5 @@
 package theta;
 
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 
@@ -22,6 +21,11 @@ public final class Address {
 		return port;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("(%s, %d)", getHost(), getPort());
+	}
+
 	public SocketAddress toSocketAddress() {
 		return new InetSocketAddress(getHost(), getPort());
 	}
@@ -34,8 +38,8 @@ public final class Address {
 		return create("localhost", port);
 	}
 
-	public static Address create(InetAddress address, int port) {
-		return create(address.getHostName(), port);
+	public static Address create(InetSocketAddress address) {
+		return create(address.getHostName(), address.getPort());
 	}
 
 }
