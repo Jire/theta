@@ -14,6 +14,11 @@ class BlockingClient extends AbstractClient {
 		super(address);
 	}
 
+	protected BlockingClient(Address address, Socket socket) {
+		this(address);
+		this.socket = socket;
+	}
+
 	protected final Socket getSocket() {
 		return socket;
 	}

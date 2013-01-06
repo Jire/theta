@@ -28,4 +28,9 @@ public final class ServerOnlyClient implements Client {
 		return client.close();
 	}
 
+	@Override
+	public String toString() {
+		return client.toString();
+	}
+
 }
