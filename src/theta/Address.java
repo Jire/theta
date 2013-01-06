@@ -26,6 +26,20 @@ public final class Address {
 		return String.format("(%s, %d)", getHost(), getPort());
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Address))
+			return false;
+		Address address = (Address) o;
+		return getHost().equals(address.getHost())
+				&& getPort() == address.getPort();
+	}
+
+	@Override
+	public int hashCode() {
+		return getHost().hashCode() ^ getPort();
+	}
+
 	public SocketAddress toSocketAddress() {
 		return new InetSocketAddress(getHost(), getPort());
 	}
