@@ -1,6 +1,6 @@
 package theta;
 
-class MockServerProvider implements GatewayProvider<Server> {
+public class MockServerProvider implements GatewayProvider<Server> {
 
 	@Override
 	public Server provide(Address address) {

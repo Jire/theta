@@ -1,6 +1,7 @@
 package theta;
 
-public abstract class ServerAdapter implements ServerListener {
+public abstract class ServerAdapter extends GatewayAdapter implements
+		ServerListener {
 
 	@Override
 	public void connected(Client client) {
